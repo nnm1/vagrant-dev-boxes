@@ -29,10 +29,16 @@ echo 'deb https://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | \
     postgresql-contrib-"$POSTGRESQL_VERSION" \
     libpq-dev
 
-# Allow external connections for Postgresql.
+# Set 'postgres' user password.
+sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'vagrant';"
+
+# Allow external connections for PostgreSQL.
 echo 'host all all all password' | \
     sudo tee -a /etc/postgresql/"$POSTGRESQL_VERSION"/main/pg_hba.conf \
 && sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" \
     /etc/postgresql/"$POSTGRESQL_VERSION"/main/postgresql.conf
+
+# Restart the PostgreSQL server for the changes to take effect.
+sudo service postgresql restart
 
 echo 'All set, rock on!'
