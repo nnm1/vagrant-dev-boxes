@@ -15,8 +15,7 @@ sudo locale-gen ru_RU.UTF-8 \
 # Install dependencies.
 sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
-    software-properties-common \
-    wget
+    software-properties-common
 
 # Install MongoDB.
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
