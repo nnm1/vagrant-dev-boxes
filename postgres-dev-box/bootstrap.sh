@@ -33,7 +33,7 @@ echo 'deb https://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | \
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'vagrant';"
 
 # Allow external connections for PostgreSQL.
-echo 'host all all all password' | \
+echo 'host all all all md5' | \
     sudo tee -a /etc/postgresql/"$POSTGRESQL_VERSION"/main/pg_hba.conf \
 && sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" \
     /etc/postgresql/"$POSTGRESQL_VERSION"/main/postgresql.conf
