@@ -6,7 +6,7 @@ Default PostgreSQL port 5432 in the host computer is forwarded to port 5432 in t
 
 ## What's In The Box
 
-* PostgreSQL 9.6 with 'postgres:vagrant' superuser.
+* PostgreSQL 9.6 with 'postgres:vagrant' superuser
 
 * Go 1.8
 
