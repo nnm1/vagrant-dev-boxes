@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Bootstrap file for setting PostgreSQL development environment.
+# Bootstrap file for setting Go development environment.
 
 # Enable non-interactive mode.
 export DEBIAN_FRONTEND=noninteractive \
