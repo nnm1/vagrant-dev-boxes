@@ -5,7 +5,7 @@
 export DEBIAN_FRONTEND=noninteractive \
 
     # Set software versions.
-    POSTGRESQL_VERSION='9.6' \
+    POSTGRESQL_VERSION='9.6'
 
 # Set locale and timezone.
 sudo locale-gen ru_RU.UTF-8 \

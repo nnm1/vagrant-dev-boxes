@@ -5,7 +5,7 @@
 export DEBIAN_FRONTEND=noninteractive \
 
     # Set software versions.
-    MONGO_VERSION='3.4' \
+    MONGO_VERSION='3.4'
 
 # Set locale and timezone.
 sudo locale-gen ru_RU.UTF-8 \
