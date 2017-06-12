@@ -1,4 +1,4 @@
-# mongo-dev-box
+# mongo-box
 
 A Vagrant powered virtual machine for Mongo application development.
 

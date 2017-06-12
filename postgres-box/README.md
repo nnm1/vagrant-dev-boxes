@@ -1,4 +1,4 @@
-# postgres-dev-box
+# postgres-box
 
 A Vagrant powered virtual machine for PostgreSQL application development.
 
