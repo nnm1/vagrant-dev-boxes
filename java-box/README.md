@@ -12,6 +12,6 @@ Port 8000 in the host computer is also forwarded to port 8000 in the virtual mac
 
 * Java 8
 
-* NodeJS 6.x LTS with Npm and the latest stable Yarn
+* NodeJS 8.x LTS with Npm
 
 * The latest stable Git

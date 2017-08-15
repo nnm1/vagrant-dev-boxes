@@ -2,12 +2,12 @@
 # Bootstrap file for setting Ruby development environment.
 
 # Enable non-interactive mode.
-export DEBIAN_FRONTEND=noninteractive \
+export DEBIAN_FRONTEND=noninteractive
 
-    # Set software versions.
-    RUBY_VERSION='2.4.1' \
-    POSTGRESQL_VERSION='9.6' \
-    NODE_VERSION='6.x'
+# Set software versions.
+RUBY_VERSION='2.4.1' \
+POSTGRESQL_VERSION='9.6' \
+NODE_VERSION='8.x'
 
 # Set locale and timezone.
 sudo locale-gen ru_RU.UTF-8 \
@@ -17,9 +17,9 @@ sudo locale-gen ru_RU.UTF-8 \
 # Install dependencies.
 sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
-    build-essential \
-    software-properties-common \
-    wget
+  build-essential \
+  software-properties-common \
+  wget
 
 # Install Git.
 sudo add-apt-repository ppa:git-core/ppa \
@@ -35,7 +35,7 @@ git clone https://github.com/rbenv/rbenv.git ~/.rbenv \
 # Install ruby-build.
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build \
 && echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' | \
-    tee -a ~/.profile \
+  tee -a ~/.profile \
 && source ~/.profile
 
 # Install ruby.
@@ -51,23 +51,23 @@ gem install bundler \
 
 # Install PostgreSQL.
 echo 'deb https://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | \
-    sudo tee -a /etc/apt/sources.list.d/pgdg.list \
+  sudo tee -a /etc/apt/sources.list.d/pgdg.list \
 && wget -qO- https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
-    sudo apt-key add - \
+  sudo apt-key add - \
 && sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
-    postgresql-"$POSTGRESQL_VERSION" \
-    postgresql-contrib-"$POSTGRESQL_VERSION" \
-    libpq-dev
+  postgresql-"$POSTGRESQL_VERSION" \
+  postgresql-contrib-"$POSTGRESQL_VERSION" \
+  libpq-dev
 
 # Set 'postgres' user password.
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'vagrant';"
 
 # Allow external connections for PostgreSQL.
 echo 'host all all all md5' | \
-    sudo tee -a /etc/postgresql/"$POSTGRESQL_VERSION"/main/pg_hba.conf \
+  sudo tee -a /etc/postgresql/"$POSTGRESQL_VERSION"/main/pg_hba.conf \
 && sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" \
-    /etc/postgresql/"$POSTGRESQL_VERSION"/main/postgresql.conf
+  /etc/postgresql/"$POSTGRESQL_VERSION"/main/postgresql.conf
 
 # Restart the PostgreSQL server for the changes to take effect.
 sudo service postgresql restart
@@ -79,8 +79,5 @@ wget -qO- https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
 && npm config set prefix '~/.npm-global' \
 && echo 'export PATH=~/.npm-global/bin:$PATH' | tee -a ~/.profile \
 && source ~/.profile
-
-# Install Yarn.
-npm install --global yarn
 
 echo 'All set, rock on!'

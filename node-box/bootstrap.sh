@@ -2,10 +2,10 @@
 # Bootstrap file for setting PostgreSQL development environment.
 
 # Enable non-interactive mode.
-export DEBIAN_FRONTEND=noninteractive \
+export DEBIAN_FRONTEND=noninteractive
 
-    # Set software versions.
-    NODE_VERSION='6.x'
+# Set software versions.
+NODE_VERSION='8.x'
 
 # Set locale and timezone.
 sudo locale-gen ru_RU.UTF-8 \
@@ -15,8 +15,8 @@ sudo locale-gen ru_RU.UTF-8 \
 # Install dependencies.
 sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
-    software-properties-common \
-    wget
+  software-properties-common \
+  wget
 
 # Install Git.
 sudo add-apt-repository ppa:git-core/ppa \
@@ -30,8 +30,5 @@ wget -qO- https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
 && npm config set prefix '~/.npm-global' \
 && echo 'export PATH=~/.npm-global/bin:$PATH' | tee -a ~/.profile \
 && source ~/.profile
-
-# Install Yarn.
-npm install --global yarn
 
 echo 'All set, rock on!'

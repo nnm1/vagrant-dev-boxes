@@ -14,6 +14,6 @@ Port 3000 in the host computer is also forwarded to port 3000 in the virtual mac
 
 * Ruby 2.4 with disabled automatic documentation
 
-* NodeJS 6.x LTS with Npm and the latest stable Yarn
+* NodeJS 8.x LTS with Npm
 
 * The latest stable Git

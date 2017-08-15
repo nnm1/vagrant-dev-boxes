@@ -14,6 +14,6 @@ Port 8000 in the host computer is also forwarded to port 8000 in the virtual mac
 
 * Python 3.6 and the latest stable pip3 with installed virtualenv
 
-* NodeJS 6.x LTS with Npm and the latest stable Yarn
+* NodeJS 8.x LTS with Npm
 
 * The latest stable Git

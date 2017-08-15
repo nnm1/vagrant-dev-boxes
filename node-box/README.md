@@ -4,6 +4,6 @@ A Vagrant-powered virtual machine for NodeJS application development.
 
 ## What's In The Box
 
-* NodeJS 6.x LTS with Npm and the latest stable Yarn
+* NodeJS 8.x LTS with Npm
 
 * The latest stable Git
