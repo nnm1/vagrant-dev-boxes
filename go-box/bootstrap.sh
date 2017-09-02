@@ -5,7 +5,7 @@
 export DEBIAN_FRONTEND=noninteractive
 
 # Set software versions.
-GO_VERSION='1.8.3' \
+GO_VERSION='1.9' \
 POSTGRESQL_VERSION='9.6' \
 NODE_VERSION='8.x'
 
