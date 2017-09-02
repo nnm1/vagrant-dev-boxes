@@ -8,7 +8,7 @@ Default PostgreSQL port 5432 in the host computer is forwarded to port 5432 in t
 
 * PostgreSQL 9.6 with 'postgres:vagrant' superuser
 
-* Go 1.8
+* Go 1.9
 
 * NodeJS 8.x LTS with Npm
 
