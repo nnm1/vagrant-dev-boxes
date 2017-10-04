@@ -41,7 +41,8 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
 && sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends mongodb-org
 
-# Autostart mongod.
+# Start mongod for the current session and automatically at boot.
+sudo systemctl start mongod.service
 sudo systemctl enable mongod.service
 
 # Install NodeJS and set Npm permissions.
