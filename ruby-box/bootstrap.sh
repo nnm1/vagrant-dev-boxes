@@ -80,4 +80,7 @@ wget -qO- https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
 && echo 'export PATH=~/.npm-global/bin:$PATH' | tee -a ~/.profile \
 && source ~/.profile
 
+# Update Npm.
+npm install --global npm
+
 echo 'All set, rock on!'
