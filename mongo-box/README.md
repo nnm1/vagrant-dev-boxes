@@ -6,4 +6,4 @@ Default Mongo port 27017 in the host computer is forwarded to port 27017 in the 
 
 ## What's In The Box
 
-* Mongo 3.4
+* MongoDB 3.4 with 'vagrant:vagrant' superuser.
