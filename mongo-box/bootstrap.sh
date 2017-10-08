@@ -25,7 +25,16 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
 && sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends mongodb-org
 
-# Start mongod for the current session and automatically at boot.
+# Start mongod for the current session.
+sudo systemctl start mongod.service
+
+# Enable Mongo authentication.
+mongo admin \
+  --eval "db.createUser({ user: 'vagrant', pwd: 'vagrant', roles: [{ role: 'userAdminAnyDatabase', db: 'admin' }] })"
+&& sudo sed -i "s/#security:/security:\n  authorization: enabled/g" \
+  /etc/mongod.conf
+
+# Restart mongod to enable auth and start the service automatically at boot.
 sudo systemctl start mongod.service
 sudo systemctl enable mongod.service
 

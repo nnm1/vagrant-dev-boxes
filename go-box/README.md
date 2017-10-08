@@ -2,11 +2,11 @@
 
 A Vagrant-powered virtual machine for Go application development.
 
-Default PostgreSQL port 5432 in the host computer is forwarded to port 5432 in the virtual machine.
+Default Mongo port 27017 in the host computer is forwarded to port 27017 in the virtual machine.
 
 ## What's In The Box
 
-* Mongo 3.4
+* MongoDB 3.4 with 'vagrant:vagrant' superuser.
 
 * Go 1.9
 
