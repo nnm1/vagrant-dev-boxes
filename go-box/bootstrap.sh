@@ -52,6 +52,10 @@ mongo admin \
 && sudo sed -i "s/#security:/security:\n  authorization: enabled/g" \
   /etc/mongod.conf
 
+# Allow the remote connections.
+# USE FOR DEV MODE ONLY!
+sudo sed -i "s/  bindIp: 127.0.0.1/#  bindIp: 127.0.0.1/g" /etc/mongod.conf
+
 # Restart mongod to enable auth and start the service automatically at boot.
 sudo systemctl restart mongod.service
 sudo systemctl enable mongod.service
