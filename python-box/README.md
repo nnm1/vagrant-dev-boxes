@@ -10,7 +10,7 @@ Port 8000 in the host computer is also forwarded to port 8000 in the virtual mac
 
 ## What's In The Box
 
-* PostgreSQL 9.6 with 'postgres:vagrant' superuser
+* PostgreSQL 10.0 with 'postgres:vagrant' superuser
 
 * Python 3.6 and the latest stable pip3 with installed virtualenv
 

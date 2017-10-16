@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Set software versions.
 JAVA_VERSION='8' \
-POSTGRESQL_VERSION='9.6' \
+POSTGRESQL_VERSION='10' \
 NODE_VERSION='8.x'
 
 # Set locale and timezone.
