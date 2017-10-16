@@ -17,6 +17,9 @@ Vagrant.configure('2') do |config|
   # Forward ports.
   config.vm.network 'forwarded_port', guest: 5432, host: 5432 # Postgres.
 
+  # Use private network (required by NFS).
+  config.vm.network 'private_network', type: 'dhcp'
+
   # Customize the VM.
   config.vm.provider 'virtualbox' do |v|
     v.cpus = 1 # Use one processor.
@@ -26,4 +29,7 @@ Vagrant.configure('2') do |config|
   # Install required software.
   config.vm.provision 'shell', path: 'bootstrap.sh', privileged: false,
                                keep_color: true
+
+  # Enable NFS to speed up folders sharing.
+  config.vm.synced_folder '.', '/vagrant', type: 'nfs'
 end

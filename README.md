@@ -8,6 +8,14 @@ A collection of Vagrant-powered virtual machines for application development.
 
 * [Vagrant](http://vagrantup.com)
 
+### Install Vagrant NFS plugin for Windows
+
+    host $ vagrant plugin install vagrant-winnfsd
+
+### Install NFS for Linux
+
+    host $ sudo apt-get install nfs-kernel-server
+
 ## How To Build The Virtual Machine
 
 Building the virtual machines is this easy:
