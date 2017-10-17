@@ -27,21 +27,21 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
 
 # Start mongod for the current session
 # and wait 5 seconds to ensure the service is running.
-sudo systemctl start mongod.service \
+sudo systemctl start mongod \
 && sleep 5
 
 # Enable Mongo authentication.
 mongo admin \
   --eval "db.createUser({ user: 'vagrant', pwd: 'vagrant', roles: [{ role: 'userAdminAnyDatabase', db: 'admin' }] })" \
-&& sudo sed -i "s/#security:/security:\n  authorization: enabled/g" \
+&& sudo sed -i 's/#security:/security:\n  authorization: enabled/g' \
   /etc/mongod.conf
 
 # Allow the remote connections.
 # USE FOR DEV MODE ONLY!
-sudo sed -i "s/  bindIp: 127.0.0.1/#  bindIp: 127.0.0.1/g" /etc/mongod.conf
+sudo sed -i 's/  bindIp: 127.0.0.1/#  bindIp: 127.0.0.1/g' /etc/mongod.conf
 
 # Restart mongod to enable auth and start the service automatically at boot.
-sudo systemctl restart mongod.service
-sudo systemctl enable mongod.service
+sudo systemctl restart mongod
+sudo systemctl enable mongod
 
 echo 'All set, rock on!'
