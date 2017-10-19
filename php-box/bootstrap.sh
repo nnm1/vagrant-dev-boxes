@@ -17,8 +17,8 @@ sudo locale-gen ru_RU.UTF-8 \
 # Install dependencies.
 sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
-  software-properties-common \
-  wget
+  curl \
+  software-properties-common
 
 # Install Git.
 sudo add-apt-repository ppa:git-core/ppa \
@@ -36,7 +36,7 @@ sudo add-apt-repository ppa:ondrej/php \
   php"$PHP_VERSION"-zip # Laravel dependencies.
 
 # Install Composer.
-wget -qO- https://getcomposer.org/installer | \
+curl -sL https://getcomposer.org/installer | \
   sudo php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set MariaDB root password.
@@ -54,7 +54,7 @@ sudo apt-key adv \
 && sudo apt-get install -y --no-install-recommends mariadb-server
 
 # Install NodeJS and set Npm permissions.
-wget -qO- https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
+curl -sL https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
 && sudo apt-get install -y --no-install-recommends nodejs \
 && mkdir ~/.npm-global \
 && npm config set prefix '~/.npm-global' \

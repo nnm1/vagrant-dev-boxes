@@ -18,9 +18,9 @@ sudo locale-gen ru_RU.UTF-8 \
 sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
   build-essential \
+  curl \
   gettext \
-  software-properties-common \
-  wget
+  software-properties-common
 
 # Install Git.
 sudo add-apt-repository ppa:git-core/ppa \
@@ -39,7 +39,7 @@ echo "alias python3=python$PYTHON_VERSION" | tee -a ~/.bash_aliases \
 && source ~/.bash_aliases
 
 # Install Pip3 (autoset Pip3 aliases).
-wget -qO- https://bootstrap.pypa.io/get-pip.py | sudo python"$PYTHON_VERSION"
+curl -sL https://bootstrap.pypa.io/get-pip.py | sudo python"$PYTHON_VERSION"
 
 # Install virtualenv.
 sudo pip3 install virtualenv
@@ -47,7 +47,7 @@ sudo pip3 install virtualenv
 # Install PostgreSQL.
 echo 'deb https://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | \
   sudo tee -a /etc/apt/sources.list.d/pgdg.list \
-&& wget -qO- https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
+&& curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
   sudo apt-key add - \
 && sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
@@ -68,7 +68,7 @@ echo 'host all all all md5' | \
 sudo service postgresql restart
 
 # Install NodeJS and set Npm permissions.
-wget -qO- https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
+curl -sL https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
 && sudo apt-get install -y --no-install-recommends nodejs \
 && mkdir ~/.npm-global \
 && npm config set prefix '~/.npm-global' \

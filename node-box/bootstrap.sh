@@ -15,8 +15,8 @@ sudo locale-gen ru_RU.UTF-8 \
 # Install dependencies.
 sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
-  software-properties-common \
-  wget
+  curl \
+  software-properties-common
 
 # Install Git.
 sudo add-apt-repository ppa:git-core/ppa \
@@ -24,7 +24,7 @@ sudo add-apt-repository ppa:git-core/ppa \
 && sudo apt-get install -y --no-install-recommends git
 
 # Install NodeJS and set Npm permissions.
-wget -qO- https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
+curl -sL https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
 && sudo apt-get install -y --no-install-recommends nodejs \
 && mkdir ~/.npm-global \
 && npm config set prefix '~/.npm-global' \

@@ -15,13 +15,13 @@ sudo locale-gen ru_RU.UTF-8 \
 # Install dependencies.
 sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
-  software-properties-common \
-  wget
+  curl \
+  software-properties-common
 
 # Install PostgreSQL.
 echo 'deb https://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | \
   sudo tee -a /etc/apt/sources.list.d/pgdg.list \
-&& wget -qO- https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
+&& curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
   sudo apt-key add - \
 && sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \

@@ -17,8 +17,8 @@ sudo locale-gen ru_RU.UTF-8 \
 # Install dependencies.
 sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
-  software-properties-common \
-  wget
+  curl \
+  software-properties-common
 
 # Install Git.
 sudo add-apt-repository ppa:git-core/ppa \
@@ -26,7 +26,7 @@ sudo add-apt-repository ppa:git-core/ppa \
 && sudo apt-get install -y --no-install-recommends git
 
 # Install Go and set env variables.
-wget -qO- https://storage.googleapis.com/golang/go"$GO_VERSION".linux-amd64.tar.gz | \
+curl -sL https://storage.googleapis.com/golang/go"$GO_VERSION".linux-amd64.tar.gz | \
   sudo tar -xz -C /usr/local \
 && echo 'export GOROOT=/usr/local/go' | tee -a ~/.profile \
 && echo 'export GOPATH=/vagrant/code' | tee -a ~/.profile \
@@ -61,7 +61,7 @@ sudo systemctl restart mongod
 sudo systemctl enable mongod
 
 # Install NodeJS and set Npm permissions.
-wget -qO- https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
+curl -sL https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \
 && sudo apt-get install -y --no-install-recommends nodejs \
 && mkdir ~/.npm-global \
 && npm config set prefix '~/.npm-global' \
