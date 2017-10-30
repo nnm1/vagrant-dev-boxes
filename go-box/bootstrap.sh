@@ -5,7 +5,7 @@
 export DEBIAN_FRONTEND=noninteractive
 
 # Set software versions.
-GO_VERSION='1.9.1' \
+GO_VERSION='1.9.2' \
 MONGO_VERSION='3.4' \
 NODE_VERSION='8.x'
 
