@@ -8,7 +8,7 @@ Port 8000 in the host computer is also forwarded to port 8000 in the virtual mac
 
 ## What's In The Box
 
-* PostgreSQL 10.0 with 'postgres:vagrant' superuser
+* PostgreSQL 10 with 'postgres:vagrant' superuser
 
 * Java 8
 

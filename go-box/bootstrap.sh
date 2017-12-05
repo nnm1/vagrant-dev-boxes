@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Set software versions.
 GO_VERSION='1.9.2' \
-MONGO_VERSION='3.4' \
+POSTGRESQL_VERSION='10' \
 NODE_VERSION='8.x'
 
 # Set locale and timezone.
@@ -33,32 +33,28 @@ curl -sL https://storage.googleapis.com/golang/go"$GO_VERSION".linux-amd64.tar.g
 && echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' | tee -a ~/.profile \
 && source ~/.profile
 
-# Install MongoDB.
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
-  --recv 0C49F3730359A14518585931BC711F9BA15703C6 \
-&& echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/$MONGO_VERSION multiverse" | \
-  sudo tee /etc/apt/sources.list.d/mongodb-org-"$MONGO_VERSION".list \
+# Install PostgreSQL.
+echo 'deb https://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | \
+  sudo tee -a /etc/apt/sources.list.d/pgdg.list \
+&& curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
+  sudo apt-key add - \
 && sudo apt-get update -qq \
-&& sudo apt-get install -y --no-install-recommends mongodb-org
+&& sudo apt-get install -y --no-install-recommends \
+  postgresql-"$POSTGRESQL_VERSION" \
+  postgresql-contrib-"$POSTGRESQL_VERSION" \
+  libpq-dev
 
-# Start mongod for the current session
-# and wait 5 seconds to ensure the service is running.
-sudo systemctl start mongod \
-&& sleep 5
+# Set 'postgres' user password (USE FOR DEV MODE ONLY!).
+sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'vagrant';"
 
-# Enable Mongo authentication.
-mongo admin \
-  --eval "db.createUser({ user: 'vagrant', pwd: 'vagrant', roles: [{ role: 'userAdminAnyDatabase', db: 'admin' }] })" \
-&& sudo sed -i 's/#security:/security:\n  authorization: enabled/g' \
-  /etc/mongod.conf
+# Allow external connections for PostgreSQL (USE FOR DEV MODE ONLY!).
+echo 'host all all all md5' | \
+  sudo tee -a /etc/postgresql/"$POSTGRESQL_VERSION"/main/pg_hba.conf \
+&& sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" \
+  /etc/postgresql/"$POSTGRESQL_VERSION"/main/postgresql.conf
 
-# Allow the remote connections.
-# USE FOR DEV MODE ONLY!
-sudo sed -i 's/  bindIp: 127.0.0.1/#  bindIp: 127.0.0.1/g' /etc/mongod.conf
-
-# Restart mongod to enable auth and start the service automatically at boot.
-sudo systemctl restart mongod
-sudo systemctl enable mongod
+# Restart the PostgreSQL server for the changes to take effect.
+sudo service postgresql restart
 
 # Install NodeJS and set Npm permissions.
 curl -sL https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo bash - \

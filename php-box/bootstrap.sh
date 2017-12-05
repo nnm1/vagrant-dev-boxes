@@ -5,7 +5,7 @@
 export DEBIAN_FRONTEND=noninteractive
 
 # Set software versions.
-PHP_VERSION='7.1' \
+PHP_VERSION='7.2' \
 MARIADB_VERSION='10.2' \
 NODE_VERSION='8.x'
 
@@ -39,7 +39,7 @@ sudo add-apt-repository ppa:ondrej/php \
 curl -sL https://getcomposer.org/installer | \
   sudo php -- --install-dir=/usr/local/bin --filename=composer
 
-# Set MariaDB root password.
+# Set MariaDB root password (USE FOR DEV MODE ONLY!).
 sudo debconf-set-selections <<< \
   'mysql-server mysql-server/root_password password vagrant' \
 && sudo debconf-set-selections <<< \

@@ -44,10 +44,10 @@ echo 'deb https://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | \
   postgresql-contrib-"$POSTGRESQL_VERSION" \
   libpq-dev
 
-# Set 'postgres' user password.
+# Set 'postgres' user password (USE FOR DEV MODE ONLY!).
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'vagrant';"
 
-# Allow external connections for PostgreSQL.
+# Allow external connections for PostgreSQL (USE FOR DEV MODE ONLY!).
 echo 'host all all all md5' | \
   sudo tee -a /etc/postgresql/"$POSTGRESQL_VERSION"/main/pg_hba.conf \
 && sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" \
