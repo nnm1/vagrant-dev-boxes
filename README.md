@@ -36,9 +36,11 @@ Don't forget to look at some helper shell scripts for newbies.
 
 * Ubuntu 16.04
 
-## Note About Symlinks
+## Notes
 
-To allow guest system to create symlinks, `vagrant up` command should be run as administrator.
+* To allow guest system to create symlinks, `vagrant up` command should be run as administrator.
+
+* If bash can not connect to the guest system, try `VAGRANT_PREFER_SYSTEM_BIN=1 vagrant ssh`
 
 ## License
 
