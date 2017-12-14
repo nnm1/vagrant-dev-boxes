@@ -2,11 +2,11 @@
 # Print commands to drop MySQL db and user.
 
 echo 'Drop MySQL database:'
-echo 'mysql> DROP DATABASE IF EXISTS db_name;'
+echo 'mysql> DROP DATABASE IF EXISTS <db_name>;'
 echo ''
 
 echo 'Drop MySQL user:'
-echo "mysql> DROP USER IF EXISTS 'user_name'@'localhost';"
+echo "mysql> DROP USER IF EXISTS '<user_name>'@'localhost';"
 echo ''
 
 echo 'Exit mysql:'
