@@ -14,6 +14,12 @@ Vagrant.configure('2') do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = 'bento/ubuntu-16.04'
 
+  # Forward ports.
+  # config.vm.network 'forwarded_port', guest: 3000, host: 3000 # Rails.
+  # config.vm.network 'forwarded_port', guest: 5432, host: 5432 # Postgres.
+  # config.vm.network 'forwarded_port', guest: 8000, host: 8000 # Spring, Laravel and Django.
+  # config.vm.network 'forwarded_port', guest: 27017, host: 27017 # Mongo.
+
   # Use private network (required by NFS).
   config.vm.network 'private_network', type: 'dhcp'
 
