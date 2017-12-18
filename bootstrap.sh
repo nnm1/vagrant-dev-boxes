@@ -89,18 +89,18 @@ sudo add-apt-repository ppa:git-core/ppa \
 # sudo systemctl start mongod \
 # && sleep 5
 
-# # Enable Mongo authentication.
+# # Enable Mongo authentication (USE FOR DEV MODE ONLY!).
 # mongo admin \
 #   --eval "db.createUser({ user: 'vagrant', pwd: 'vagrant', roles: [{ role: 'userAdminAnyDatabase', db: 'admin' }] })" \
 # && sudo sed -i 's/#security:/security:\n  authorization: enabled/g' \
 #   /etc/mongod.conf
 
 # # Allow the remote connections (USE FOR DEV MODE ONLY!).
-# sudo sed -i 's/  bindIp: 127.0.0.1/#  bindIp: 127.0.0.1/g' /etc/mongod.conf
+# sudo sed -i 's/  bindIp: 127.0.0.1/  bindIp: 0.0.0.0/g' /etc/mongod.conf
 
 # # Restart mongod to enable auth and start the service automatically at boot.
-# sudo systemctl restart mongod
-# sudo systemctl enable mongod
+# sudo systemctl restart mongod \
+# && sudo systemctl enable mongod
 
 ##
 # Install NodeJS and set Npm permissions.
