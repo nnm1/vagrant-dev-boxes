@@ -29,7 +29,7 @@ sudo locale-gen en_US.UTF-8 ru_RU.UTF-8 \
 && sudo update-locale LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8 \
 && sudo timedatectl set-timezone Europe/Moscow
 
-# Uncomment required software...
+# TODO: Uncomment required software.
 
 ##
 # Install Git.
@@ -151,8 +151,7 @@ sudo locale-gen en_US.UTF-8 ru_RU.UTF-8 \
 # sudo add-apt-repository ppa:jonathonf/python-"$PYTHON_VERSION" \
 # && sudo apt-get update -qq \
 # && sudo apt-get install -y --no-install-recommends \
-#   python"$PYTHON_VERSION" \
-#   python"$PYTHON_VERSION"-dev
+#   python"$PYTHON_VERSION" python"$PYTHON_VERSION"-dev
 
 # # Set Python3 aliases.
 # echo "alias python3=python$PYTHON_VERSION" | tee -a ~/.bash_aliases \
