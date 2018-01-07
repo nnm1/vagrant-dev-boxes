@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 # Bootstraps the application development environment.
 
-# Enable non-interactive mode.
 export DEBIAN_FRONTEND=noninteractive \
-
 # TODO: Uncomment and set software versions.
 
 # GO_VERSION=1.9.2 \
@@ -19,7 +17,7 @@ export DEBIAN_FRONTEND=noninteractive \
 # TODO: Uncomment required dependencies.
 && sudo apt-get update -qq \
 && sudo apt-get install -y --no-install-recommends \
-  apt-transport-https curl locales \
+  apt-transport-https ca-certificates curl locales \
   # software-properties-common \ # Required for Git, Java, MariaDB, PHP, Python.
   # debconf-utils \ # Required for Java.
   # build-essential gettext \ # Required for Python.
@@ -68,7 +66,7 @@ sudo locale-gen en_US.UTF-8 ru_RU.UTF-8 \
 
 # # Install MariaDB.
 # sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 \
-# && sudo add-apt-repository "deb [arch=amd64,i386,ppc64el] http://mirror.mephi.ru/mariadb/repo/$MARIADB_VERSION/ubuntu xenial main" \
+# && sudo add-apt-repository "deb [arch=amd64,i386,ppc64el] https://mirror.mephi.ru/mariadb/repo/$MARIADB_VERSION/ubuntu xenial main" \
 # && sudo apt-get update -qq \
 # && sudo apt-get install -y --no-install-recommends mariadb-server
 
@@ -77,7 +75,7 @@ sudo locale-gen en_US.UTF-8 ru_RU.UTF-8 \
 ##
 
 # sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5 \
-# && echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/$MONGO_VERSION multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-"$MONGO_VERSION".list \
+# && echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/$MONGO_VERSION multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-"$MONGO_VERSION".list \
 # && sudo apt-get update -qq \
 # && sudo apt-get install -y --no-install-recommends mongodb-org
 
