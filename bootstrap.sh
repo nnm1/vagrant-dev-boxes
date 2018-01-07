@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Bootstraps the application development environment.
 
-export DEBIAN_FRONTEND=noninteractive \
 # TODO: Uncomment and set software versions.
+export \
+# DEBIAN_FRONTEND=noninteractive \ # Required for Java, MariaDB.
 
 # GO_VERSION=1.9.2 \
 # JAVA_VERSION=9 \
@@ -53,7 +54,7 @@ sudo locale-gen en_US.UTF-8 ru_RU.UTF-8 \
 
 # sudo add-apt-repository ppa:webupd8team/java \
 # && sudo apt-get update -qq \
-# && echo 'oracle-java8-installer shared/accepted-oracle-license-v1-1 select true' | sudo debconf-set-selections \
+# && echo "oracle-java$JAVA_VERSION-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections \
 # && sudo apt-get install -y --no-install-recommends oracle-java"$JAVA_VERSION"-installer
 
 ##
