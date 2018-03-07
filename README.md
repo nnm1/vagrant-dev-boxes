@@ -36,11 +36,9 @@ Don't forget to look at some helper shell scripts for newbies.
 
 * Ubuntu 16.04
 
-* The latest stable Git
-
 ## Available Software
 
-* Go 1.9
+* Go 1.10
 
 * Java 9
 
@@ -48,7 +46,7 @@ Don't forget to look at some helper shell scripts for newbies.
 
 * MongoDB 3.6 with 'vagrant:vagrant' superuser
 
-* NodeJS 8.x LTS with Npm
+* NodeJS 9.x with Npm
 
 * PHP 7.2 with the latest stable Composer
 
@@ -56,7 +54,7 @@ Don't forget to look at some helper shell scripts for newbies.
 
 * Python 3.6 and the latest stable pip3 with installed virtualenv
 
-* Ruby 2.4 with disabled automatic documentation
+* Ruby 2.5 with disabled automatic documentation
 
 Remember to map database and application ports in the host computer to ports in the virtual machine. Thus, applications running in the virtual machine can be accessed via localhost:xxxx in the host computer. Be sure the web server is bound to the IP 0.0.0.0, instead of 127.0.0.1 so it can access all interfaces, e.g.:
 
@@ -66,9 +64,9 @@ Remember to map database and application ports in the host computer to ports in 
 
 ## Notes
 
-* To allow guest system to create symlinks, `vagrant up` command should be run as administrator.
+* To allow guest system to create symlinks, disable NFS syncing and run `vagrant up` command as administrator.
 
-* If bash can not connect to the guest system, try `VAGRANT_PREFER_SYSTEM_BIN=1 vagrant ssh`
+* If a shell can not connect to the guest system, try `VAGRANT_PREFER_SYSTEM_BIN=1 vagrant ssh`
 
 ## License
 

@@ -25,6 +25,9 @@ Vagrant.configure('2') do |config|
 
   # Customize the VM.
   config.vm.provider 'virtualbox' do |v|
+    # Allow symlinks on shared folders.
+    v.customize ['setextradata', :id, 'VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root', '1']
+
     v.cpus = 1 # Use one processor.
     v.memory = 1024 # Use 1024 of RAM.
   end
