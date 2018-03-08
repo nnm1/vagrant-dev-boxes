@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Bootstraps the application development environment.
 
+# Enable silent mode.
+export DEBIAN_FRONTEND=noninteractive 
+
 # TODO: Uncomment required dependencies.
 
 # Install dependencies, generate and set locales, set the timezone.
