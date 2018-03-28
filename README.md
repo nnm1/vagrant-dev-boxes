@@ -40,13 +40,13 @@ Don't forget to look at some helper shell scripts for newbies.
 
 * Go 1.10
 
-* Java 9
+* Java 8 LTS
 
 * MariaDB 10.2 with 'root:vagrant' superuser
 
 * MongoDB 3.6 with 'vagrant:vagrant' superuser
 
-* NodeJS 9.x with Npm
+* NodeJS 8.x LTS with Npm
 
 * PHP 7.2 with the latest stable Composer
 

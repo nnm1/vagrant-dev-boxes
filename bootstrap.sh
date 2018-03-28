@@ -2,17 +2,18 @@
 # Bootstraps the application development environment.
 
 # Enable silent mode.
-export DEBIAN_FRONTEND=noninteractive 
+export DEBIAN_FRONTEND=noninteractive
 
 # TODO: Uncomment required dependencies.
 
-# Install dependencies, generate and set locales, set the timezone.
+# Install dependencies, set locales, set the timezone.
 sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-  apt-transport-https ca-certificates curl locales software-properties-common \
-  # build-essential gettext \ # Required for Python.
+  apt-transport-https ca-certificates curl language-pack-ru \
+  # mc \ # Additional software.
+  # software-properties-common \ # Required for Java, MariaDB, PHP.
+  # build-essential gettext software-properties-common \ # Required for Python.
   # build-essential git libreadline-dev libssl-dev zlib1g-dev \ # Required for Ruby.
-&& sudo locale-gen en_US.UTF-8 ru_RU.UTF-8 \
-&& sudo update-locale LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8 \
+&& sudo update-locale LANG=ru_RU.UTF-8 LANGUAGE=ru_RU:ru LC_ALL=ru_RU.UTF-8 \
 && sudo timedatectl set-timezone Europe/Moscow
 
 # TODO: Uncomment required software.
@@ -31,7 +32,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 # Install Java.
 ##
 
-# JAVA_VERSION=9 \
+# JAVA_VERSION=8 \
 # && echo "oracle-java$JAVA_VERSION-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections \
 # && sudo add-apt-repository ppa:webupd8team/java \
 # && sudo apt-get update && sudo apt-get install -y --no-install-recommends oracle-java"$JAVA_VERSION"-set-default
@@ -70,7 +71,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 # Install NodeJS, update Npm and set Npm permissions.
 ##
 
-# NODE_VERSION=9.x \
+# NODE_VERSION=8.x \
 # && curl -sL https://deb.nodesource.com/setup_"$NODE_VERSION" | sudo -E bash - \
 # && sudo apt-get update && sudo apt-get install -y --no-install-recommends nodejs \
 # && mkdir ~/.npm-global \
