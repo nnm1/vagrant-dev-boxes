@@ -16,22 +16,6 @@ A Vagrant-powered virtual machine for application development.
 
     host $ sudo apt-get install nfs-kernel-server
 
-## How To Build The Virtual Machine
-
-Building the virtual machines is this easy:
-
-    host $ git clone https://github.com/skanukov/vagrant-dev-boxes
-    host $ cd vagrant-dev-boxes/<box>
-    host $ vagrant up
-
-That's it.
-
-After the installation has finished, you can access the virtual machine with
-
-    host $ vagrant ssh
-
-Don't forget to look at some helper shell scripts for newbies.
-
 ## What's In The Box
 
 * Ubuntu 16.04
@@ -62,12 +46,10 @@ Remember to map database and application ports in the host computer to ports in 
     $ python3 manage.py runserver 0.0.0.0:8000
     $ bin/rails server -b 0.0.0.0
 
+Don't forget to look at some helper shell scripts for newbies.
+
 ## Notes
 
 * To allow guest system to create symlinks, disable NFS syncing and run `vagrant up` command as administrator.
 
 * If a shell can not connect to the guest system, try `VAGRANT_PREFER_SYSTEM_BIN=1 vagrant ssh`
-
-## License
-
-Released under the MIT License, Copyright (c) 2017 Sergey Kanukov, inspired by official [Rails dev box](https://github.com/rails/rails-dev-box).
