@@ -8,12 +8,12 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies, set locales, set the timezone.
 sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-  apt-transport-https ca-certificates curl language-pack-ru \
-  # mc \ # Additional software.
+  apt-transport-https ca-certificates curl language-pack-en language-pack-ru \
+  mc \ # Additional software.
   # software-properties-common \ # Required for Java, MariaDB, PHP.
   # build-essential gettext software-properties-common \ # Required for Python.
   # build-essential git libreadline-dev libssl-dev zlib1g-dev \ # Required for Ruby.
-&& sudo update-locale LANG=ru_RU.UTF-8 LANGUAGE=ru_RU:ru LC_ALL=ru_RU.UTF-8 \
+&& sudo update-locale LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8 \
 && sudo timedatectl set-timezone Europe/Moscow
 
 # TODO: Uncomment required software.
@@ -25,7 +25,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 # GO_VERSION=1.10 \
 # && curl -sL https://storage.googleapis.com/golang/go"$GO_VERSION".linux-amd64.tar.gz | sudo tar -xz -C /usr/local \
 # && echo 'export GOROOT=/usr/local/go GOPATH=/vagrant/code' | tee -a ~/.profile \
-# && echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' | tee -a ~/.profile \
+# && echo 'export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"' | tee -a ~/.profile \
 # && source ~/.profile
 
 ##
@@ -76,7 +76,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 # && sudo apt-get update && sudo apt-get install -y --no-install-recommends nodejs \
 # && mkdir ~/.npm-global \
 # && npm config set prefix '~/.npm-global' \
-# && echo 'export PATH=~/.npm-global/bin:$PATH' | tee -a ~/.profile \
+# && echo 'export PATH=~/.npm-global/bin:"$PATH"' | tee -a ~/.profile \
 # && source ~/.profile \
 # && npm install --global npm
 
@@ -129,7 +129,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 # RUBY_VERSION=2.5.0 \
 # && git clone https://github.com/rbenv/rbenv.git ~/.rbenv \
 # && git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build \
-# && echo 'export PATH=$PATH:~/.rbenv/bin:~/.rbenv/plugins/ruby-build/bin' | tee -a ~/.profile \
+# && echo 'export PATH="$PATH":~/.rbenv/bin:~/.rbenv/plugins/ruby-build/bin' | tee -a ~/.profile \
 # && echo 'eval "$(rbenv init -)"' | tee -a ~/.profile \
 # && source ~/.profile \
 # && rbenv install "$RUBY_VERSION" && rbenv global "$RUBY_VERSION" \
